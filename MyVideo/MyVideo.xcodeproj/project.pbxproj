@@ -13,7 +13,6 @@
 		2F739A1B207BA51C00533A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F739A1A207BA51C00533A9F /* Assets.xcassets */; };
 		2F739A1E207BA51C00533A9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F739A1C207BA51C00533A9F /* LaunchScreen.storyboard */; };
 		2F739A21207BA51C00533A9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F739A20207BA51C00533A9F /* main.m */; };
-		2F739A29207BB28400533A9F /* YRCaptureVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F739A28207BB28400533A9F /* YRCaptureVideoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +26,6 @@
 		2F739A1D207BA51C00533A9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F739A1F207BA51C00533A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F739A20207BA51C00533A9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2F739A27207BB28400533A9F /* YRCaptureVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YRCaptureVideoViewController.h; sourceTree = "<group>"; };
-		2F739A28207BB28400533A9F /* YRCaptureVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YRCaptureVideoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +62,6 @@
 				2F739A12207BA51C00533A9F /* AppDelegate.m */,
 				2F739A14207BA51C00533A9F /* ViewController.h */,
 				2F739A15207BA51C00533A9F /* ViewController.m */,
-				2F739A27207BB28400533A9F /* YRCaptureVideoViewController.h */,
-				2F739A28207BB28400533A9F /* YRCaptureVideoViewController.m */,
 				2F739A17207BA51C00533A9F /* Main.storyboard */,
 				2F739A1A207BA51C00533A9F /* Assets.xcassets */,
 				2F739A1C207BA51C00533A9F /* LaunchScreen.storyboard */,
@@ -149,7 +144,6 @@
 			files = (
 				2F739A16207BA51C00533A9F /* ViewController.m in Sources */,
 				2F739A21207BA51C00533A9F /* main.m in Sources */,
-				2F739A29207BB28400533A9F /* YRCaptureVideoViewController.m in Sources */,
 				2F739A13207BA51C00533A9F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
