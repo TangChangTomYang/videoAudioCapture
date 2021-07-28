@@ -51,6 +51,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0050A02026B15DC600D938AA /* export_video */ = {
+			isa = PBXGroup;
+			children = (
+				001194ED26B02ED200DFC6AF /* ExportVideoViewController.h */,
+				001194EE26B02ED200DFC6AF /* ExportVideoViewController.m */,
+			);
+			path = export_video;
+			sourceTree = "<group>";
+		};
+		0050A02126B15DDF00D938AA /* export_audio */ = {
+			isa = PBXGroup;
+			children = (
+				001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */,
+				001194F026B02EEE00DFC6AF /* ExportAudioViewController.h */,
+			);
+			path = export_audio;
+			sourceTree = "<group>";
+		};
+		0050A02226B15DFE00D938AA /* preview */ = {
+			isa = PBXGroup;
+			children = (
+				001706CB26B0E8B4008ED085 /* PreviewViewController.h */,
+				001706CC26B0E8B4008ED085 /* PreviewViewController.m */,
+			);
+			path = preview;
+			sourceTree = "<group>";
+		};
 		2F739A05207BA51C00533A9F = {
 			isa = PBXGroup;
 			children = (
@@ -76,12 +103,9 @@
 				2F739A15207BA51C00533A9F /* ViewController.m */,
 				001706CF26B0E8D0008ED085 /* MenuViewController.h */,
 				001706D026B0E8D0008ED085 /* MenuViewController.m */,
-				001706CB26B0E8B4008ED085 /* PreviewViewController.h */,
-				001706CC26B0E8B4008ED085 /* PreviewViewController.m */,
-				001194ED26B02ED200DFC6AF /* ExportVideoViewController.h */,
-				001194EE26B02ED200DFC6AF /* ExportVideoViewController.m */,
-				001194F026B02EEE00DFC6AF /* ExportAudioViewController.h */,
-				001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */,
+				0050A02226B15DFE00D938AA /* preview */,
+				0050A02026B15DC600D938AA /* export_video */,
+				0050A02126B15DDF00D938AA /* export_audio */,
 				2F739A17207BA51C00533A9F /* Main.storyboard */,
 				2F739A1A207BA51C00533A9F /* Assets.xcassets */,
 				2F739A1C207BA51C00533A9F /* LaunchScreen.storyboard */,
