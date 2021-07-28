@@ -51,15 +51,17 @@
     
     [self saveViewDataOutputToFile];
 }
+
 - (IBAction)stopRecordBtnClick:(id)sender {
     // 停止文件写入
-    [self.videoFileOutput  stopRecording];
-    
-    [self.session stopRunning];
-    self.session = nil;
-    [self.previewLayer removeFromSuperlayer];
-    self.previewLayer = nil;
-    
+    if ([self.videoFileOutput isRecording]) {
+        [self.videoFileOutput  stopRecording];
+        
+        [self.session stopRunning];
+        self.session = nil;
+        [self.previewLayer removeFromSuperlayer];
+        self.previewLayer = nil;
+    }
 }
 
 
@@ -79,17 +81,14 @@
     
     self.videoFileOutput =  videoFileOutput;
     
-    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"test.mp4"];
+    NSString *filePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject]
+                          stringByAppendingPathComponent:@"test.mp4"];
     NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
     [videoFileOutput startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
 }
 
 
 #pragma mark- 私有方法
-
-
-
-
 -(BOOL)setupVideoCapture{
     //1、创建捕捉会话
     
@@ -97,20 +96,20 @@
    // NSArray<AVCaptureDevice *> *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     NSArray<AVCaptureDevice *> *devices = [AVCaptureDevice devices];
     // 从前置摄像和后置摄像中选择后置摄像头
-    AVCaptureDevice *backGroundDev = nil;
+    AVCaptureDevice *cameraDev = nil;
     for (AVCaptureDevice *dev  in devices) {
         if(AVCaptureDevicePositionBack  == dev.position){
-            backGroundDev = dev;
+            cameraDev = dev;
             break;
         }
     }
-    if(backGroundDev == nil){
+    if(cameraDev == nil){
         NSLog(@"当前后置摄像头不能使用");
         return NO;
     }
-    NSError *err = nil;
-    AVCaptureDeviceInput *camaraDevInput = [AVCaptureDeviceInput deviceInputWithDevice:backGroundDev error:&err];
     
+    NSError *err = nil;
+    AVCaptureDeviceInput *camaraDevInput = [AVCaptureDeviceInput deviceInputWithDevice:cameraDev error:&err];
     if(err){
         NSLog(@"设置摄像头捕捉输入时出错");
         return NO;

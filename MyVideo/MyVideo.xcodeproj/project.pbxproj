@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001194EF26B02ED200DFC6AF /* ExportVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001194EE26B02ED200DFC6AF /* ExportVideoViewController.m */; };
+		001194F226B02EEE00DFC6AF /* ExportAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */; };
+		001706CD26B0E8B4008ED085 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001706CC26B0E8B4008ED085 /* PreviewViewController.m */; };
+		001706D126B0E8D0008ED085 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001706D026B0E8D0008ED085 /* MenuViewController.m */; };
 		2F739A13207BA51C00533A9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F739A12207BA51C00533A9F /* AppDelegate.m */; };
 		2F739A16207BA51C00533A9F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F739A15207BA51C00533A9F /* ViewController.m */; };
 		2F739A19207BA51C00533A9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F739A17207BA51C00533A9F /* Main.storyboard */; };
@@ -16,6 +20,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		001194ED26B02ED200DFC6AF /* ExportVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportVideoViewController.h; sourceTree = "<group>"; };
+		001194EE26B02ED200DFC6AF /* ExportVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportVideoViewController.m; sourceTree = "<group>"; };
+		001194F026B02EEE00DFC6AF /* ExportAudioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportAudioViewController.h; sourceTree = "<group>"; };
+		001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportAudioViewController.m; sourceTree = "<group>"; };
+		001706CB26B0E8B4008ED085 /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		001706CC26B0E8B4008ED085 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		001706CF26B0E8D0008ED085 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		001706D026B0E8D0008ED085 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		2F739A0E207BA51C00533A9F /* MyVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F739A11207BA51C00533A9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F739A12207BA51C00533A9F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +74,14 @@
 				2F739A12207BA51C00533A9F /* AppDelegate.m */,
 				2F739A14207BA51C00533A9F /* ViewController.h */,
 				2F739A15207BA51C00533A9F /* ViewController.m */,
+				001706CF26B0E8D0008ED085 /* MenuViewController.h */,
+				001706D026B0E8D0008ED085 /* MenuViewController.m */,
+				001706CB26B0E8B4008ED085 /* PreviewViewController.h */,
+				001706CC26B0E8B4008ED085 /* PreviewViewController.m */,
+				001194ED26B02ED200DFC6AF /* ExportVideoViewController.h */,
+				001194EE26B02ED200DFC6AF /* ExportVideoViewController.m */,
+				001194F026B02EEE00DFC6AF /* ExportAudioViewController.h */,
+				001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */,
 				2F739A17207BA51C00533A9F /* Main.storyboard */,
 				2F739A1A207BA51C00533A9F /* Assets.xcassets */,
 				2F739A1C207BA51C00533A9F /* LaunchScreen.storyboard */,
@@ -143,8 +163,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F739A16207BA51C00533A9F /* ViewController.m in Sources */,
+				001194F226B02EEE00DFC6AF /* ExportAudioViewController.m in Sources */,
 				2F739A21207BA51C00533A9F /* main.m in Sources */,
+				001194EF26B02ED200DFC6AF /* ExportVideoViewController.m in Sources */,
+				001706D126B0E8D0008ED085 /* MenuViewController.m in Sources */,
 				2F739A13207BA51C00533A9F /* AppDelegate.m in Sources */,
+				001706CD26B0E8B4008ED085 /* PreviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,13 +303,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = UM24Q5JH6X;
+				DEVELOPMENT_TEAM = LESEXUKLEU;
 				INFOPLIST_FILE = MyVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.360gobuylight.LETTIN3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.efetion.eut.cib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d4742443-66fb-40fb-8a67-749a040e1b87";
-				PROVISIONING_PROFILE_SPECIFIER = lettin3.0_dev1127;
+				PROVISIONING_PROFILE_SPECIFIER = com.efetion.eut.cib;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -294,15 +318,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = UM24Q5JH6X;
+				DEVELOPMENT_TEAM = LESEXUKLEU;
 				INFOPLIST_FILE = MyVideo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.360gobuylight.LETTIN3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.efetion.eut.cib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "31b1f6b7-57ef-4008-aefc-323119a9712d";
-				PROVISIONING_PROFILE_SPECIFIER = lettin3.0_hoc1127;
+				PROVISIONING_PROFILE_SPECIFIER = com.efetion.eut.cib_Production;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
