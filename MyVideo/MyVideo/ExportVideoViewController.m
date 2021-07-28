@@ -18,7 +18,7 @@
 @property(nonatomic, strong) NSTimer *timer;
 
 
-@property(nonatomic, strong)AVAssetExportSession *exportSession;
+@property(nonatomic, strong)AVAssetExportSession *exportSession; // 有必要吗? 
 
 @end
 
@@ -138,7 +138,12 @@
    [super viewWillDisappear:animated];
    self.navigationController.navigationBarHidden = NO;
     
-   [self stopCapture];
+    if([self.movieFileOutput isRecording]){
+        [self stopStore];
+    }
+    if ([self.session isRunning]) {
+        [self stopCapture];
+    }
 }
 
 
