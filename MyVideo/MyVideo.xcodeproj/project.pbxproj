@@ -11,6 +11,7 @@
 		001194F226B02EEE00DFC6AF /* ExportAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */; };
 		001706CD26B0E8B4008ED085 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001706CC26B0E8B4008ED085 /* PreviewViewController.m */; };
 		001706D126B0E8D0008ED085 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001706D026B0E8D0008ED085 /* MenuViewController.m */; };
+		00ECE55526B27ED600613D2A /* AVAssetExportSession+export.m in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE55426B27ED600613D2A /* AVAssetExportSession+export.m */; };
 		2F739A13207BA51C00533A9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F739A12207BA51C00533A9F /* AppDelegate.m */; };
 		2F739A16207BA51C00533A9F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F739A15207BA51C00533A9F /* ViewController.m */; };
 		2F739A19207BA51C00533A9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F739A17207BA51C00533A9F /* Main.storyboard */; };
@@ -28,6 +29,8 @@
 		001706CC26B0E8B4008ED085 /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		001706CF26B0E8D0008ED085 /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		001706D026B0E8D0008ED085 /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		00ECE55326B27ED600613D2A /* AVAssetExportSession+export.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVAssetExportSession+export.h"; sourceTree = "<group>"; };
+		00ECE55426B27ED600613D2A /* AVAssetExportSession+export.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVAssetExportSession+export.m"; sourceTree = "<group>"; };
 		2F739A0E207BA51C00533A9F /* MyVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F739A11207BA51C00533A9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F739A12207BA51C00533A9F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -63,8 +66,8 @@
 		0050A02126B15DDF00D938AA /* export_audio */ = {
 			isa = PBXGroup;
 			children = (
-				001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */,
 				001194F026B02EEE00DFC6AF /* ExportAudioViewController.h */,
+				001194F126B02EEE00DFC6AF /* ExportAudioViewController.m */,
 			);
 			path = export_audio;
 			sourceTree = "<group>";
@@ -103,6 +106,8 @@
 				2F739A15207BA51C00533A9F /* ViewController.m */,
 				001706CF26B0E8D0008ED085 /* MenuViewController.h */,
 				001706D026B0E8D0008ED085 /* MenuViewController.m */,
+				00ECE55326B27ED600613D2A /* AVAssetExportSession+export.h */,
+				00ECE55426B27ED600613D2A /* AVAssetExportSession+export.m */,
 				0050A02226B15DFE00D938AA /* preview */,
 				0050A02026B15DC600D938AA /* export_video */,
 				0050A02126B15DDF00D938AA /* export_audio */,
@@ -188,6 +193,7 @@
 			files = (
 				2F739A16207BA51C00533A9F /* ViewController.m in Sources */,
 				001194F226B02EEE00DFC6AF /* ExportAudioViewController.m in Sources */,
+				00ECE55526B27ED600613D2A /* AVAssetExportSession+export.m in Sources */,
 				2F739A21207BA51C00533A9F /* main.m in Sources */,
 				001194EF26B02ED200DFC6AF /* ExportVideoViewController.m in Sources */,
 				001706D126B0E8D0008ED085 /* MenuViewController.m in Sources */,

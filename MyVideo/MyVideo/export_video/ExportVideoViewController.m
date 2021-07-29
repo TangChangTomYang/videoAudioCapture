@@ -8,6 +8,7 @@
 
 #import "ExportVideoViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AVAssetExportSession+export.h"
 
 
 @interface ExportVideoViewController ()<AVCaptureFileOutputRecordingDelegate>
@@ -16,9 +17,7 @@
 @property(nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
 @property(nonatomic, strong) AVCaptureMovieFileOutput *movieFileOutput;
 @property(nonatomic, strong) NSTimer *timer;
-
-
-@property(nonatomic, strong)AVAssetExportSession *exportSession; // 有必要吗? 
+  
 
 @end
 
@@ -65,7 +64,6 @@
     if (err != nil) {
         return;
     }
-     
     [self.session beginConfiguration];
     if ([self.session canAddInput:audioDiviceInput]) {
         [self.session addInput:audioDiviceInput];
@@ -85,6 +83,8 @@
 
 -(void)setupMovieFileOutput{
     AVCaptureMovieFileOutput *movieFileOutput =  [[AVCaptureMovieFileOutput alloc] init];
+    // 解决时长超过10s没声音问题
+    movieFileOutput.movieFragmentInterval = kCMTimeInvalid;
     [self.session beginConfiguration];
     if ([self.session canAddOutput:movieFileOutput]) {
         [self.session addOutput:movieFileOutput];
@@ -154,8 +154,8 @@
     if (self.currentCameraDevInput) {
         
         AVCaptureDevice *cameraDevice = [self.currentCameraDevInput device];
-        AVCaptureDevicePosition position = cameraDevice.position;
-        if (AVCaptureDevicePositionBack == position) {
+        AVCaptureDevicePosition position = AVCaptureDevicePositionBack; ;
+        if (position == cameraDevice.position) {
             position = AVCaptureDevicePositionFront;
         }
         
@@ -203,7 +203,7 @@
          connection.videoOrientation = videoOrientation;
          */
         if ([self.movieFileOutput isRecording] == NO) {
-            NSURL *fileUrl = [self outputTempFileUrl];
+            NSURL *fileUrl = [AVAssetExportSession  outputTempVideoFileUrl];
             [self.movieFileOutput startRecordingToOutputFileURL:fileUrl recordingDelegate:self];
         }
     }
@@ -216,23 +216,6 @@
     }
 }
 
-// 临时存储(大文件, 原始数据)
--(NSURL *)outputTempFileUrl{
-    long long time = [[NSDate date] timeIntervalSince1970];
-    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *filePath = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%lld_temp.mp4",time]];
-    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
-    return fileUrl;
-}
-
-// 最终存储(小文件, 压缩后的数据)
--(NSURL *)outputFileUrl{
-    long long time = [[NSDate date] timeIntervalSince1970];
-    NSString *dir = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *filePath = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%lld.mp4",time]];
-    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
-    return fileUrl;
-}
 
 
 
@@ -264,10 +247,9 @@ static long len = 0;
     [self startStore];
     NSLog(@"-----开始存储");
     
+    [self emptyTimer];
     len = 0;
-   self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
-    
-    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
 }
 
 -(void)timerAction{
@@ -277,9 +259,15 @@ static long len = 0;
 
 - (IBAction)stopStoreBtnClick:(id)sender {
     [self stopStore];
-    [self.timer invalidate];
-    self.timer = nil;
+    [self emptyTimer];
     NSLog(@"-----停止存储");
+}
+
+-(void)emptyTimer{
+    if(self.timer){
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 
@@ -298,30 +286,45 @@ static long len = 0;
     NSLog(@"-----didFinishRecordingToOutputFileAtURL: %@--",outputFileURL.path);
     
     
-    [self exportVideoFromPath:outputFileURL toPath:[self outputFileUrl]];
+    [AVAssetExportSession exportVideoFileFromPath:outputFileURL toPath:[AVAssetExportSession  outputVideoFileUrl]];
+ 
+    
     
 }
 
 
 
--(void)exportVideoFromPath:(NSURL *)fileUrl toPath:(NSURL *)toPath{
-    
-    NSLog(@"-准备----导出ing");
-    
-    AVAsset *asset = [AVAsset assetWithURL:fileUrl];
-    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset
-                                                                           presetName:AVAssetExportPresetMediumQuality];
-    exportSession.outputFileType = AVFileTypeMPEG4;
-    exportSession.shouldOptimizeForNetworkUse = YES;
-    exportSession.outputURL = toPath;
-    self.exportSession = exportSession;
-    
-    [exportSession exportAsynchronouslyWithCompletionHandler:^{
-         
-        if (exportSession.status == AVAssetExportSessionStatusCompleted ) {
-            NSLog(@"-----导出 ok");
-        }
-    }];
-}
+//-(void)exportVideoFromPath:(NSURL *)fileUrl toPath:(NSURL *)toPath{
+//
+//    NSLog(@"-准备----导出ing");
+//
+//    AVAsset *asset = [AVAsset assetWithURL:fileUrl];
+//    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset
+//                                                                           presetName:AVAssetExportPresetMediumQuality];
+//    exportSession.outputFileType = AVFileTypeMPEG4;
+//    exportSession.shouldOptimizeForNetworkUse = YES;
+//    exportSession.outputURL = toPath;
+//    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+//
+//        if (exportSession.status == AVAssetExportSessionStatusCompleted ) {
+//            NSLog(@"-----导出 ok,at: %@",toPath);
+//            BOOL isExists = [[NSFileManager defaultManager] fileExistsAtPath:fileUrl.path];
+//            if(isExists){
+//                [[NSFileManager defaultManager] removeItemAtPath:fileUrl.path error:nil];
+//            }
+//        }
+//    }];
+//
+//
+//    [NSTimer scheduledTimerWithTimeInterval:0.01 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//        NSLog(@"------导出进度: %f", exportSession.progress);
+//        if(exportSession.progress >= 1){
+//            [timer invalidate];
+//        }
+//    }];
+//}
 
+
+
+ 
 @end
